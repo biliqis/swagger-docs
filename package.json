@@ -1,0 +1,44 @@
+{
+  "name": "postman_to_swagger",
+  "version": "1.0.0",
+  "description": "a postman to swagger ui conversion script",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "compile": "tsc --watch"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/E-wave112/postman_to_swagger.git"
+  },
+  "keywords": [
+    "postman",
+    "swagger"
+  ],
+  "author": "E-wave",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/E-wave112/postman_to_swagger/issues"
+  },
+  "homepage": "https://github.com/E-wave112/postman_to_swagger#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "json-to-pretty-yaml": "^1.2.2",
+    "nodemon": "^2.0.12",
+    "swagger-ui-express": "^4.1.6",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.9.4",
+    "@types/yamljs": "^0.2.31",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
+  }
+}

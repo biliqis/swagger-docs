@@ -1,0 +1,462 @@
+openapi: 3.0.0
+info:
+  title: Simple booking-site
+  description: >-
+    This API allow users to see view and book hotels based on their location
+    preferences
+  version: 1.0.0
+servers:
+  - url: http://{{url}}
+  - url: http://localhost:3000
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - bearerAuth: []
+tags:
+  - name: user
+    description: Allows users to login to the platform
+  - name: book_A_place
+    description: Allows users to book a place
+  - name: admin
+  - name: space
+paths:
+  /login:
+    post:
+      tags:
+        - user
+      summary: Login
+      description: Allows users to login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: test@gmail.com
+                password: '6786754'
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                user:
+                  _id: 6193f2dd03e7a002b1fbcf0f
+                  name: testing
+                  email: test@gmail.com
+                  phonenumber: '07348287702'
+                  country: Kingdm
+                  address: no 4
+                message: login successful!
+  /sign-up:
+    post:
+      tags:
+        - user
+      summary: Signup
+      description: Allows users to signup to the platform
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: demian
+                email: deniu@gmail.com
+                phonenumber: '078287702'
+                country: Kingdm
+                password: '6786754'
+                address: no 4
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: user created succesfully!
+                user:
+                  acknowledged: true
+                  insertedId: 6193f2dd03e7a002b1fbcf0f
+                token: >-
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcwODU5MTcsImV4cCI6MTcyMzQ4NTkxN30.O2yNp6fLH1eUILucJksqyKL2rEKHyU9EYwTVIzTpTxg
+                data:
+                  name: testing
+                  email: test@gmail.com
+                  phonenumber: '07348287702'
+                  country: Kingdm
+                  password: '6786754'
+                  address: no 4
+                  _id: 6193f2dd03e7a002b1fbcf0f
+        undefined:
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: ''
+  /update-user/618bc3a7092784ff243d157c:
+    put:
+      tags:
+        - user
+      summary: update user
+      description: Allows users to update their profile
+      requestBody:
+        content: {}
+      responses:
+        undefined:
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                code: 200
+                message: user updated successfully
+  /delete-user/618bc3a7092784ff243d157c:
+    delete:
+      tags:
+        - user
+      summary: delete user
+      description: >-
+        Allows the admin to remove a user that infringes on the laws and
+        policies of the  platform
+      responses:
+        undefined:
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                code: 200
+                message: user deleted successfully
+  /book-place:
+    post:
+      tags:
+        - book_A_place
+      summary: Book_space
+      description: Allows users to book a reservation from the platform
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                noOfDays: 5
+                pricePerDay: 250
+                spacename: orientals
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  checkIn: '2021-11-18T02:43:40.135Z'
+                  place: 61959b24ef7f214b1c924952
+                  checkout: '2021-11-23T02:43:46.310Z'
+                  noOfDays: 5
+                  totalAmount: 1250
+                  user: 6195bde24796f09ce58e4ba1
+                  _id: 6195bde24796f09ce58e4ba2
+                  __v: 0
+                success: booked successfully!
+  /admin/login:
+    post:
+      tags:
+        - admin
+      summary: login
+      description: Allows admin to login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: deiu@gmail.com
+                password: '6786754'
+      responses:
+        undefined:
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                token: >-
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyVHlwZSI6IkFkbWluIiwiaWF0IjoxNjM3MjA0MjEwLCJleHAiOjE3MjM2MDQyMTB9.6xcm_UKpD7Ds6FxV2f0gZrBlteiOxDu5eCxm6H4c16o
+                admin:
+                  _id: 61959f9c069e22002234b158
+                  email: deiu@gmail.com
+                  password: $2b$10$F279ZGd3zPbJGT6O3aCdouKYIoM0Tv5XDdbA6dXCpjlFK5z/liKkm
+                  userType: Admin
+                  __v: 0
+                message: login successful!
+  /admin/sign-up:
+    post:
+      tags:
+        - admin
+      summary: signup
+      description: Allows admin to signup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: deian
+                email: deiu@gmail.com
+                phonenumber: '078287702'
+                country: Kingdm
+                password: '6786754'
+                address: no 4
+      responses:
+        undefined:
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: admin signup successful
+                data:
+                  _id: 61959f9c069e22002234b158
+                  email: deiu@gmail.com
+                  password: $2b$10$F279ZGd3zPbJGT6O3aCdouKYIoM0Tv5XDdbA6dXCpjlFK5z/liKkm
+                  userType: Admin
+                  __v: 0
+  /createSpace:
+    post:
+      tags:
+        - space
+      summary: create space
+      description: Allows admin to add reservations on the platform
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                spacename: orientals
+                phonenumber: '08149013071'
+                City: lagos
+                pricePerDay: 5000
+                yearEstablished: 2004
+                AverageNoOfVisitorPerYear: 2000
+                location: unitedkingdom
+      responses:
+        undefined:
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: space created successfully
+                data:
+                  spacename: orientals
+                  distanceToClient: 27
+                  phonenumber: '08149016597'
+                  location: unitedkingdom
+                  City: lagos
+                  pricePerDay: 3000
+                  description: ytbgbgvvn
+                  yearEstablished: 2014
+                  AverageNoOfVisitorPerYear: 2000
+                  Available: 'yes'
+                  verified: false
+                  _id: 6195c18b4796f09ce58e4baa
+                  __v: 0
+  /get-all:
+    get:
+      tags:
+        - space
+      summary: get all
+      description: view all the available reservations (typically on the landing page)
+      responses:
+        undefined:
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  - _id: 616977396e68bd14fefc80a8
+                    spacename: orienkals
+                    phonenumber: '08149018967'
+                    location: unitedkingdom
+                    City: lagos
+                    pricePerDay: 5000
+                    yearEstablished: 2004
+                    AverageNoOfVisitorPerYear: 2000
+                    Available: 'yes'
+                    verified: false
+                    __v: 0
+                    description: ytbgbgvvn
+                    distanceToClient: 27
+                  - _id: 61940b3408a251bb15b177a2
+                    spacename: orienkals
+                    phonenumber: '0814901896897'
+                    location: unitedkingdom
+                    City: lagos
+                    pricePerDay: 5000
+                    yearEstablished: 2004
+                    AverageNoOfVisitorPerYear: 2000
+                    Available: 'yes'
+                    verified: false
+                    __v: 0
+                    description: ytbgbgvvn
+                    distanceToClient: 27
+                  - _id: 619590c54a22c33ba5728e0b
+                    spacename: ikeja
+                    phonenumber: '0814901909071'
+                    location: unitedkingdom
+                    City: lagos
+                    pricePerDay: 5000
+                    yearEstablished: 2004
+                    AverageNoOfVisitorPerYear: 2000
+                    Available: 'yes'
+                    verified: false
+                    __v: 0
+                  - _id: 61959b24ef7f214b1c924952
+                    spacename: orientals
+                    distanceToClient: 27
+                    phonenumber: '0814901689'
+                    location: unitedkingdom
+                    City: lagos
+                    pricePerDay: 5000
+                    description: ytbgbgvvn
+                    yearEstablished: 2004
+                    AverageNoOfVisitorPerYear: 2000
+                    Available: 'yes'
+                    verified: false
+                    __v: 0
+                  - _id: 6195a15a5f8285e09898e18c
+                    spacename: orientals
+                    distanceToClient: 27
+                    phonenumber: '08149016897'
+                    location: unitedkingdom
+                    City: lagos
+                    pricePerDay: 5000
+                    description: ytbgbgvvn
+                    yearEstablished: 2004
+                    AverageNoOfVisitorPerYear: 2000
+                    Available: 'yes'
+                    verified: false
+                    __v: 0
+                  - _id: 6195c18b4796f09ce58e4baa
+                    spacename: orientals
+                    distanceToClient: 27
+                    phonenumber: '08149016597'
+                    location: unitedkingdom
+                    City: lagos
+                    pricePerDay: 3000
+                    description: ytbgbgvvn
+                    yearEstablished: 2014
+                    AverageNoOfVisitorPerYear: 2000
+                    Available: 'yes'
+                    verified: false
+                    __v: 0
+  /getSpaceInfo/616977396e68bd14fefc80a8:
+    get:
+      tags:
+        - space
+      summary: get one by Id
+      description: View a particular reservation
+      responses:
+        undefined:
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  _id: 616977396e68bd14fefc80a8
+                  spacename: orienkals
+                  phonenumber: '08149018967'
+                  location: unitedkingdom
+                  City: lagos
+                  pricePerDay: 5000
+                  yearEstablished: 2004
+                  AverageNoOfVisitorPerYear: 2000
+                  Available: 'yes'
+                  verified: false
+                  __v: 0
+                  description: ytbgbgvvn
+                  distanceToClient: 27
+  /delete-space/616977396e68bd14fefc80a8:
+    delete:
+      tags:
+        - space
+      summary: delete-space
+      description: >-
+        Allows admins to remove a reservation from the platform due to certain
+        reasons
+      responses:
+        undefined:
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: deleted succesfully
+  /update/616977396e68bd14fefc80a8:
+    patch:
+      tags:
+        - space
+      summary: update space
+      description: >-
+        Allows admins and reservation owners to update information about a
+        particular reservation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                spacename: orienkals
+                phonenumber: '08149018967'
+                City: lagos
+                distanceToClient: 27
+                pricePerDay: 5000
+                description: ytbgbgvvn
+                NoOfBed: 6
+                yearEstablished: 2004
+                AverageNoOfVisitorPerYear: 2000
+                location: unitedkingdom
+      responses:
+        undefined:
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  _id: 616977396e68bd14fefc80a8
+                  spacename: orienkals
+                  phonenumber: '08149018967'
+                  location: unitedkingdom
+                  City: lagos
+                  pricePerDay: 5000
+                  yearEstablished: 2004
+                  AverageNoOfVisitorPerYear: 2000
+                  Available: 'yes'
+                  verified: false
+                  __v: 0
+                  description: ytbgbgvvn
+                  distanceToClient: 27
+                message: updated sucessfully

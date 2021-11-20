@@ -1,0 +1,821 @@
+{
+	"info": {
+		"_postman_id": "268cbf00-cc58-4dad-b850-c50bfc2299a0",
+		"name": "Simple booking-site",
+		"description": "This API allow users to see view and book hotels based on their location preferences",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@gmail.com\",\n    \"password\": \"6786754\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Allows users to login"
+					},
+					"response": [
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@gmail.com\",\n    \"password\": \"6786754\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"_id\": \"6193f2dd03e7a002b1fbcf0f\",\n        \"name\": \"testing\",\n        \"email\": \"test@gmail.com\",\n        \"phonenumber\": \"07348287702\",\n        \"country\": \"Kingdm\",\n        \"address\": \"no 4\"\n    },\n    \"message\": \"login successful!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"demian\",\n    \"email\": \"deniu@gmail.com\",\n    \"phonenumber\": \"078287702\",\n    \"country\": \"Kingdm\",\n    \"password\": \"6786754\",\n     \"address\": \"no 4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/sign-up",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sign-up"
+							]
+						},
+						"description": "Allows users to signup to the platform"
+					},
+					"response": [
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"testing\",\n    \"email\": \"test@gmail.com\",\n    \"phonenumber\": \"07348287702\",\n    \"country\": \"Kingdm\",\n    \"password\": \"6786754\",\n     \"address\": \"no 4\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/sign-up",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sign-up"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"message\": \"user created succesfully!\",\n    \"user\": {\n        \"acknowledged\": true,\n        \"insertedId\": \"6193f2dd03e7a002b1fbcf0f\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcwODU5MTcsImV4cCI6MTcyMzQ4NTkxN30.O2yNp6fLH1eUILucJksqyKL2rEKHyU9EYwTVIzTpTxg\",\n    \"data\": {\n        \"name\": \"testing\",\n        \"email\": \"test@gmail.com\",\n        \"phonenumber\": \"07348287702\",\n        \"country\": \"Kingdm\",\n        \"password\": \"6786754\",\n        \"address\": \"no 4\",\n        \"_id\": \"6193f2dd03e7a002b1fbcf0f\"\n    }\n}"
+						},
+						{
+							"name": "Bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"demian\",\n    \"email\": \"deniu@gmail.com\",\n    \"phonenumber\": \"078287702\",\n    \"country\": \"Kingdm\",\n    \"password\": \"6786754\",\n     \"address\": \"no 4\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/sign-up",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sign-up"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/update-user/618bc3a7092784ff243d157c",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"update-user",
+								"618bc3a7092784ff243d157c"
+							]
+						},
+						"description": "Allows users to update their profile"
+					},
+					"response": [
+						{
+							"name": "update user",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"demi\",\n    \"email\": \"deniu@gmail.com\",\n    \"phonenumber\": \"0782djjdj87702\",\n    \"country\": \"djdjdjdjdjdj\",\n    \"password\": \"6786754\",\n     \"address\": \"no 4\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/update-user/618bc3a7092784ff243d157c",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"update-user",
+										"618bc3a7092784ff243d157c"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"code\":200,\n    \"message\":\"user updated successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"demi\",\n    \"email\": \"deniu@gmail.com\",\n    \"phonenumber\": \"0782djjdj87702\",\n    \"country\": \"djdjdjdjdjdj\",\n    \"password\": \"6786754\",\n     \"address\": \"no 4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/delete-user/618bc3a7092784ff243d157c",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"delete-user",
+								"618bc3a7092784ff243d157c"
+							]
+						},
+						"description": "Allows the admin to remove a user that infringes on the laws and policies of the  platform"
+					},
+					"response": [
+						{
+							"name": "delete user",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/delete-user/618bc3a7092784ff243d157c",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"delete-user",
+										"618bc3a7092784ff243d157c"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"code\":200,\n    \"message\":\"user deleted successfully\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Allows users to login to the platform"
+		},
+		{
+			"name": "book_A_place",
+			"item": [
+				{
+					"name": "Book_space",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"noOfDays\": 5,\n    \"pricePerDay\": 250,\n    \"spacename\" : \"orientals\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/book-place",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"book-place"
+							]
+						},
+						"description": "Allows users to book a reservation from the platform"
+					},
+					"response": [
+						{
+							"name": "Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"noOfDays\": 5,\n    \"pricePerDay\": 250,\n    \"spacename\" : \"orientals\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/book-place",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"book-place"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"checkIn\": \"2021-11-18T02:43:40.135Z\",\n        \"place\": \"61959b24ef7f214b1c924952\",\n        \"checkout\": \"2021-11-23T02:43:46.310Z\",\n        \"noOfDays\": 5,\n        \"totalAmount\": 1250,\n        \"user\": \"6195bde24796f09ce58e4ba1\",\n        \"_id\": \"6195bde24796f09ce58e4ba2\",\n        \"__v\": 0\n    },\n    \"success\": \"booked successfully!\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Allows users to book a place"
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  \n  \n  {\"email\": \"deiu@gmail.com\",\n    \"password\": \"6786754\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"login"
+							]
+						},
+						"description": "Allows admin to login"
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "  \n  \n  {\"email\": \"deiu@gmail.com\",\n    \"password\": \"6786754\"\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/admin/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"admin",
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyVHlwZSI6IkFkbWluIiwiaWF0IjoxNjM3MjA0MjEwLCJleHAiOjE3MjM2MDQyMTB9.6xcm_UKpD7Ds6FxV2f0gZrBlteiOxDu5eCxm6H4c16o\",\n    \"admin\": {\n        \"_id\": \"61959f9c069e22002234b158\",\n        \"email\": \"deiu@gmail.com\",\n        \"password\": \"$2b$10$F279ZGd3zPbJGT6O3aCdouKYIoM0Tv5XDdbA6dXCpjlFK5z/liKkm\",\n        \"userType\": \"Admin\",\n        \"__v\": 0\n    },\n    \"message\": \"login successful!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"deian\",\n    \"email\": \"deiu@gmail.com\",\n    \"phonenumber\": \"078287702\",\n    \"country\": \"Kingdm\",\n    \"password\": \"6786754\",\n     \"address\": \"no 4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/sign-up",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"sign-up"
+							]
+						},
+						"description": "Allows admin to signup"
+					},
+					"response": [
+						{
+							"name": "signup",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"deian\",\n    \"email\": \"deiu@gmail.com\",\n    \"phonenumber\": \"078287702\",\n    \"country\": \"Kingdm\",\n    \"password\": \"6786754\",\n     \"address\": \"no 4\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/admin/sign-up",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"admin",
+										"sign-up"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"message\": \"admin signup successful\",\n    \"data\": {\n        \"_id\": \"61959f9c069e22002234b158\",\n        \"email\": \"deiu@gmail.com\",\n        \"password\": \"$2b$10$F279ZGd3zPbJGT6O3aCdouKYIoM0Tv5XDdbA6dXCpjlFK5z/liKkm\",\n        \"userType\": \"Admin\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "space",
+			"item": [
+				{
+					"name": "create space",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"spacename\" : \"orientals\",\n    \"phonenumber\" : \"08149013071\",\n    \"City\" :\"lagos\",\n    \"pricePerDay\" : 5000,\n    \"yearEstablished\": 2004,\n    \"AverageNoOfVisitorPerYear\" :2000,\n    \"location\" : \"unitedkingdom\"\n\n\n\n\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/createSpace",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"createSpace"
+							]
+						},
+						"description": "Allows admin to add reservations on the platform"
+					},
+					"response": [
+						{
+							"name": "create space",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"spacename\" : \"orientals\",\n    \"phonenumber\" : \"08149013071\",\n    \"City\" :\"lagos\",\n    \"pricePerDay\" : 5000,\n    \"yearEstablished\": 2004,\n    \"AverageNoOfVisitorPerYear\" :2000,\n    \"location\" : \"unitedkingdom\"\n\n\n\n\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/createSpace",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"createSpace"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"message\": \"space created successfully\",\n    \"data\": {\n        \"spacename\": \"orientals\",\n        \"distanceToClient\": 27,\n        \"phonenumber\": \"08149016597\",\n        \"location\": \"unitedkingdom\",\n        \"City\": \"lagos\",\n        \"pricePerDay\": 3000,\n        \"description\": \"ytbgbgvvn\",\n        \"yearEstablished\": 2014,\n        \"AverageNoOfVisitorPerYear\": 2000,\n        \"Available\": \"yes\",\n        \"verified\": false,\n        \"_id\": \"6195c18b4796f09ce58e4baa\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"spacename\" : \"orientals\",\n    \"phonenumber\" : \"08149013071\",\n    \"City\" :\"lagos\",\n    \"pricePerDay\" : 5000,\n    \"yearEstablished\": 2004,\n    \"AverageNoOfVisitorPerYear\" :2000,\n    \"location\" : \"unitedkingdom\"\n\n\n\n\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/get-all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"get-all"
+							]
+						},
+						"description": "view all the available reservations (typically on the landing page)"
+					},
+					"response": [
+						{
+							"name": "get all",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"spacename\" : \"orientals\",\n    \"phonenumber\" : \"08149013071\",\n    \"City\" :\"lagos\",\n    \"pricePerDay\" : 5000,\n    \"yearEstablished\": 2004,\n    \"AverageNoOfVisitorPerYear\" :2000,\n    \"location\" : \"unitedkingdom\"\n\n\n\n\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/get-all",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"get-all"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"616977396e68bd14fefc80a8\",\n            \"spacename\": \"orienkals\",\n            \"phonenumber\": \"08149018967\",\n            \"location\": \"unitedkingdom\",\n            \"City\": \"lagos\",\n            \"pricePerDay\": 5000,\n            \"yearEstablished\": 2004,\n            \"AverageNoOfVisitorPerYear\": 2000,\n            \"Available\": \"yes\",\n            \"verified\": false,\n            \"__v\": 0,\n            \"description\": \"ytbgbgvvn\",\n            \"distanceToClient\": 27\n        },\n        {\n            \"_id\": \"61940b3408a251bb15b177a2\",\n            \"spacename\": \"orienkals\",\n            \"phonenumber\": \"0814901896897\",\n            \"location\": \"unitedkingdom\",\n            \"City\": \"lagos\",\n            \"pricePerDay\": 5000,\n            \"yearEstablished\": 2004,\n            \"AverageNoOfVisitorPerYear\": 2000,\n            \"Available\": \"yes\",\n            \"verified\": false,\n            \"__v\": 0,\n            \"description\": \"ytbgbgvvn\",\n            \"distanceToClient\": 27\n        },\n        {\n            \"_id\": \"619590c54a22c33ba5728e0b\",\n            \"spacename\": \"ikeja\",\n            \"phonenumber\": \"0814901909071\",\n            \"location\": \"unitedkingdom\",\n            \"City\": \"lagos\",\n            \"pricePerDay\": 5000,\n            \"yearEstablished\": 2004,\n            \"AverageNoOfVisitorPerYear\": 2000,\n            \"Available\": \"yes\",\n            \"verified\": false,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"61959b24ef7f214b1c924952\",\n            \"spacename\": \"orientals\",\n            \"distanceToClient\": 27,\n            \"phonenumber\": \"0814901689\",\n            \"location\": \"unitedkingdom\",\n            \"City\": \"lagos\",\n            \"pricePerDay\": 5000,\n            \"description\": \"ytbgbgvvn\",\n            \"yearEstablished\": 2004,\n            \"AverageNoOfVisitorPerYear\": 2000,\n            \"Available\": \"yes\",\n            \"verified\": false,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6195a15a5f8285e09898e18c\",\n            \"spacename\": \"orientals\",\n            \"distanceToClient\": 27,\n            \"phonenumber\": \"08149016897\",\n            \"location\": \"unitedkingdom\",\n            \"City\": \"lagos\",\n            \"pricePerDay\": 5000,\n            \"description\": \"ytbgbgvvn\",\n            \"yearEstablished\": 2004,\n            \"AverageNoOfVisitorPerYear\": 2000,\n            \"Available\": \"yes\",\n            \"verified\": false,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6195c18b4796f09ce58e4baa\",\n            \"spacename\": \"orientals\",\n            \"distanceToClient\": 27,\n            \"phonenumber\": \"08149016597\",\n            \"location\": \"unitedkingdom\",\n            \"City\": \"lagos\",\n            \"pricePerDay\": 3000,\n            \"description\": \"ytbgbgvvn\",\n            \"yearEstablished\": 2014,\n            \"AverageNoOfVisitorPerYear\": 2000,\n            \"Available\": \"yes\",\n            \"verified\": false,\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "get one by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"spacename\" : \"orientals\",\n    \"phonenumber\" : \"08149013071\",\n    \"City\" :\"lagos\",\n    \"pricePerDay\" : 5000,\n    \"yearEstablished\": 2004,\n    \"AverageNoOfVisitorPerYear\" :2000,\n    \"location\" : \"unitedkingdom\"\n\n\n\n\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/getSpaceInfo/616977396e68bd14fefc80a8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"getSpaceInfo",
+								"616977396e68bd14fefc80a8"
+							]
+						},
+						"description": "View a particular reservation"
+					},
+					"response": [
+						{
+							"name": "get one by Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"spacename\" : \"orientals\",\n    \"phonenumber\" : \"08149013071\",\n    \"City\" :\"lagos\",\n    \"pricePerDay\" : 5000,\n    \"yearEstablished\": 2004,\n    \"AverageNoOfVisitorPerYear\" :2000,\n    \"location\" : \"unitedkingdom\"\n\n\n\n\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/getSpaceInfo/616977396e68bd14fefc80a8",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"getSpaceInfo",
+										"616977396e68bd14fefc80a8"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"616977396e68bd14fefc80a8\",\n        \"spacename\": \"orienkals\",\n        \"phonenumber\": \"08149018967\",\n        \"location\": \"unitedkingdom\",\n        \"City\": \"lagos\",\n        \"pricePerDay\": 5000,\n        \"yearEstablished\": 2004,\n        \"AverageNoOfVisitorPerYear\": 2000,\n        \"Available\": \"yes\",\n        \"verified\": false,\n        \"__v\": 0,\n        \"description\": \"ytbgbgvvn\",\n        \"distanceToClient\": 27\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete-space",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/delete-space/616977396e68bd14fefc80a8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"delete-space",
+								"616977396e68bd14fefc80a8"
+							]
+						},
+						"description": "Allows admins to remove a reservation from the platform due to certain reasons"
+					},
+					"response": [
+						{
+							"name": "delete-space",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/delete-space/616977396e68bd14fefc80a8",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"delete-space",
+										"616977396e68bd14fefc80a8"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"message\": \"deleted succesfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update space",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"spacename\" : \"orienkals\",\n    \"phonenumber\" : \"08149018967\",\n    \"City\" :\"lagos\",\n    \"distanceToClient\":27,\n    \"pricePerDay\" : 5000,\n    \"description\" :\"ytbgbgvvn\",\n    \"NoOfBed\":6,\n    \"yearEstablished\": 2004,\n    \"AverageNoOfVisitorPerYear\" :2000,\n    \"location\" : \"unitedkingdom\"\n\n\n\n\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/update/616977396e68bd14fefc80a8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"update",
+								"616977396e68bd14fefc80a8"
+							]
+						},
+						"description": "Allows admins and reservation owners to update information about a particular reservation"
+					},
+					"response": [
+						{
+							"name": "update space",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"spacename\" : \"orienkals\",\n    \"phonenumber\" : \"08149018967\",\n    \"City\" :\"lagos\",\n    \"distanceToClient\":27,\n    \"pricePerDay\" : 5000,\n    \"description\" :\"ytbgbgvvn\",\n    \"NoOfBed\":6,\n    \"yearEstablished\": 2004,\n    \"AverageNoOfVisitorPerYear\" :2000,\n    \"location\" : \"unitedkingdom\"\n\n\n\n\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/update/616977396e68bd14fefc80a8",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"update",
+										"616977396e68bd14fefc80a8"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"616977396e68bd14fefc80a8\",\n        \"spacename\": \"orienkals\",\n        \"phonenumber\": \"08149018967\",\n        \"location\": \"unitedkingdom\",\n        \"City\": \"lagos\",\n        \"pricePerDay\": 5000,\n        \"yearEstablished\": 2004,\n        \"AverageNoOfVisitorPerYear\": 2000,\n        \"Available\": \"yes\",\n        \"verified\": false,\n        \"__v\": 0,\n        \"description\": \"ytbgbgvvn\",\n        \"distanceToClient\": 27\n    },\n    \"message\": \"updated sucessfully\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:3000"
+		}
+	]
+}
